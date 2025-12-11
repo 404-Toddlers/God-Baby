@@ -1,0 +1,378 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #212121;
+    color: #ececec;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 16px;
+    font-weight: 500;
+    color: #ececec;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: none;
+    border: none;
+    color: #ececec;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+.icon-btn:hover {
+    background: #2f2f2f;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: #2f2f2f;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-content h2 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    justify-content: flex-end;
+}
+
+.modal-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.modal-btn.cancel {
+    background: transparent;
+    color: #ececec;
+}
+
+.modal-btn.cancel:hover {
+    background: #3f3f3f;
+}
+
+.modal-btn.confirm {
+    background: #8b5cf6;
+    color: white;
+}
+
+.modal-btn.confirm:hover {
+    background: #7c3aed;
+}
+
+.input-box.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.tired-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.tired-overlay.show {
+    display: flex;
+}
+
+.tired-message {
+    background: #2f2f2f;
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.tired-message h2 {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.tired-message p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ececec;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.welcome {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.welcome h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: #ececec;
+    margin-bottom: 8px;
+}
+
+.chat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    width: 100%;
+    display: none;
+}
+
+.chat.active {
+    display: block;
+}
+
+.msg {
+    max-width: 800px;
+    margin: 0 auto 24px;
+    display: flex;
+    gap: 16px;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-top: 2px;
+}
+
+.user-icon {
+    background: #19c37d;
+}
+
+.ai-icon {
+    background: #8b5cf6;
+}
+
+.content {
+    flex: 1;
+    line-height: 1.6;
+    padding-top: 4px;
+}
+
+.thinking-dots {
+    display: inline-flex;
+    gap: 3px;
+}
+
+.thinking-dots span {
+    width: 4px;
+    height: 4px;
+    background: #666;
+    border-radius: 50%;
+    animation: blink 1.4s infinite;
+}
+
+.thinking-dots span:nth-child(2) { animation-delay: 0.2s; }
+.thinking-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+    0%, 60%, 100% { opacity: 0.3; }
+    30% { opacity: 1; }
+}
+
+.input-area {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+}
+
+.input-box {
+    background: #2f2f2f;
+    border-radius: 24px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 1px solid #3f3f3f;
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.file-preview {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: #3f3f3f;
+    border-radius: 12px;
+    font-size: 13px;
+    color: #ececec;
+}
+
+.file-preview-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.remove-file {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #8b8b8b;
+    transition: color 0.2s;
+}
+
+.remove-file:hover {
+    color: #ececec;
+}
+
+.input-box:focus-within {
+    border-color: #565656;
+}
+
+.add-btn {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8b8b8b;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.add-btn:hover {
+    color: #ececec;
+}
+
+#fileInput {
+    display: none;
+}
+
+input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: #ececec;
+    font-size: 15px;
+}
+
+input::placeholder {
+    color: #6b6b6b;
+}
+
+.send-btn {
+    width: 32px;
+    height: 32px;
+    background: #676767;
+    border: none;
+    color: #212121;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.send-btn:hover:not(:disabled) {
+    background: #7a7a7a;
+}
+
+.send-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.chat::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chat::-webkit-scrollbar-thumb {
+    background: #3f3f3f;
+    border-radius: 4px;
+}

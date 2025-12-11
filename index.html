@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>God baby</title>
+
+
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            God baby
+        </div>
+        <button class="icon-btn" onclick="showNewChatModal()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+            </svg>
+        </button>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h2>Start new chat?</h2>
+            <div class="modal-buttons">
+                <button class="modal-btn cancel" onclick="hideModal()">Cancel</button>
+                <button class="modal-btn confirm" onclick="newChat()">Yes</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="tired-overlay" id="tiredOverlay">
+        <div class="tired-message">
+            <p>God baby is tired. He is going to meet some baddies. come back later!</p>
+        </div>
+    </div>
+    
+    <div class="main" id="main">
+        <div class="welcome">
+            <h1>whats on your mind kiddo?</h1>
+        </div>
+    </div>
+
+    <div class="chat" id="chat"></div>
+    
+    <div class="input-area">
+        <div class="input-box">
+            <div id="filePreview"></div>
+            <div class="input-row">
+                <div class="add-btn" onclick="document.getElementById('fileInput').click()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                </div>
+                <input type="file" id="fileInput" accept="image/*,.pdf,.doc,.docx,.txt" onchange="handleFile(event)">
+                <input 
+                    type="text" 
+                    id="input" 
+                    placeholder="Ask anything"
+                    onkeydown="if(event.key==='Enter')send()"
+                >
+                <button class="send-btn" onclick="send()" id="btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
